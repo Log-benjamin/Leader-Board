@@ -5,4 +5,6 @@ const newName = document.querySelector('.inputName');
 const newScore = document.querySelector('.inputScore');
 
 export default listScore;
-export { refreshBtn, submitBtn, newName, newScore };
+export {
+  refreshBtn, submitBtn, newName, newScore,
+};

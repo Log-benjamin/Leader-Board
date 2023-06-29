@@ -1,19 +1,17 @@
 import './style.css';
-import { refreshBtn, submitBtn, newName, newScore } from './modules/domVariables.js';
-import { submitData, createGame } from './modules/game.js';
-import addNewScore from './modules/displayScore.js';
+import {
+  refreshBtn, submitBtn, newName, newScore,
+} from './modules/domVariables';
+import submitData from './modules/game';
+import addNewScore from './modules/displayScore';
 
 // Refresh BTN
 refreshBtn.addEventListener('click', addNewScore);
 
 // submit BTN
-submitBtn.addEventListener(('click'),(e)=>{
-    e.preventDefault();
-
-    submitData(newName.value, parseInt(newScore.value));
-    //refresh
-    newName.value = '';
-    newScore.value = '';
+submitBtn.addEventListener(('click'), () => {
+  submitData(newName, newScore);
+  // refresh
+  newName.value = '';
+  newScore.value = '';
 });
-
-createGame();

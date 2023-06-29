@@ -1,40 +1,25 @@
-import {baseURL, gameID} from './getAPIData.js';
+import { baseURL, gameID } from './getAPIData';
 
-export const createGame = async () => {
-  const gameName =  {name: 'Leader Board', ID: 'yuBYeCBeU53kiMwUACnF'};
+const submitData = async (Name, Score) => {
+  const name = Name.value;
+
   try {
-    const response = await fetch(`${baseURL}games/`, {
+    const response = await fetch(`${baseURL}games/${gameID}/scores/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(gameName),
+      body: JSON.stringify({
+        user: name,
+        score: Number(Score.value),
+      }),
     });
-
     const data = await response.json();
-    return `Game created with ID: ${gameName.ID}`;
+
+    return data.result;
   } catch (error) {
-    return `Error creating game: ${error}`;
+    return `Error submitting score: ${error}`;
   }
 };
 
-export const submitData = async (name, score) => {
-
-    try {
-      const response = await fetch(`${baseURL}games/${gameID}/scores/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          user: name,
-          score: score,
-        }),
-      });
-      const data = await response.json();
-
-      return data.result;
-    } catch (error) {
-      return `Error submitting score: ${error}`;
-    }
-  };
+export default submitData;
