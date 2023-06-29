@@ -2,7 +2,7 @@ import './style.css';
 import {
   refreshBtn, submitBtn, newName, newScore,
 } from './modules/domVariables';
-import submitData from './modules/game';
+import submitData from './modules/submitScore';
 import addNewScore from './modules/displayScore';
 
 // Refresh BTN
