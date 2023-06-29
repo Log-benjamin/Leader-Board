@@ -1,4 +1,17 @@
 import './style.css';
-import addNewScore from './modules/createScoreList';
+import {
+  refreshBtn, submitBtn, newName, newScore,
+} from './modules/domVariables';
+import submitData from './modules/game';
+import addNewScore from './modules/displayScore';
 
-addNewScore();
+// Refresh BTN
+refreshBtn.addEventListener('click', addNewScore);
+
+// submit BTN
+submitBtn.addEventListener(('click'), () => {
+  submitData(newName, newScore);
+  // refresh
+  newName.value = '';
+  newScore.value = '';
+});
